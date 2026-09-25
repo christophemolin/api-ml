@@ -1,0 +1,65 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntetePage from '../components/EntetePage.astro';
+import CartePoint from '../components/CartePoint.astro';
+
+const page = await getEntry('pages', 'nous-rejoindre');
+if (!page) throw new Error('Fichier src/content/pages/nous-rejoindre.md introuvable');
+const { Content } = await render(page);
+---
+
+<BaseLayout title={page.data.title} description={page.data.description}>
+  <EntetePage
+    surtitre="Nous rejoindre"
+    titre="Pourquoi nous rejoindre ?"
+    intro="Rejoindre l'API, c'est donner un peu de son temps pour l'école de ses enfants, dans une équipe disponible et à l'écoute."
+  />
+
+  <section class="section">
+    <div class="conteneur">
+      <div class="grille points">
+        {page.data.points.map((point, i) => <CartePoint {...point} numero={i + 1} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--creme">
+    <div class="conteneur rejoindre">
+      <div class="prose">
+        <Content />
+        <p><a class="bouton" href="/contacts/">Trouver l'e-mail de mon école</a></p>
+      </div>
+      <div class="dessin dessin--penche-d rejoindre__dessin">
+        <img src="/images/illustrations/enfants.jpg" alt="Dessin de deux enfants jouant au ballon dans la cour" width="1400" height="722" loading="lazy" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .points {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+
+  .rejoindre {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .rejoindre .prose :global(h2) {
+    margin-top: 0;
+  }
+
+  @media (max-width: 820px) {
+    .rejoindre {
+      grid-template-columns: 1fr;
+    }
+
+    .rejoindre__dessin {
+      max-width: 420px;
+    }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+interface Props {
+  titre: string;
+  texte: string;
+  image?: string;
+  numero?: number;
+}
+
+const { titre, texte, image, numero } = Astro.props;
+---
+
+<article class="carte point">
+  {
+    image && (
+      <div class:list={['dessin', 'point__dessin', numero && numero % 2 === 0 ? 'dessin--penche-d' : 'dessin--penche-g']}>
+        <img src={image} alt="" loading="lazy" />
+      </div>
+    )
+  }
+  <h3>
+    {numero && <span class="point__numero">{numero}</span>}
+    {titre}
+  </h3>
+  <p>{texte}</p>
+</article>
+
+<style>
+  .point {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .point__dessin {
+    align-self: center;
+    width: min(100%, 220px);
+    margin: 0.25rem auto 1.5rem;
+  }
+
+  .point__dessin img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+  }
+
+  .point__numero {
+    display: inline-grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--blanc);
+    font-size: 0.95rem;
+    vertical-align: 0.1em;
+  }
+
+  .point h3 {
+    text-wrap: pretty;
+  }
+
+  .point p {
+    color: var(--texte-doux);
+  }
+</style>

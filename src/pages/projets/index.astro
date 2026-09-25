@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntetePage from '../../components/EntetePage.astro';
+import CarteProjet from '../../components/CarteProjet.astro';
+
+const projets = (await getCollection('projets', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Projets"
+  description="Les projets et actions menés tout au long de l'année par l'API dans les écoles et collèges de Maisons-Laffitte."
+>
+  <EntetePage
+    surtitre="Nos projets"
+    titre="Ce que nous faisons pendant l'année"
+    intro="Événements festifs, instances scolaires, actions solidaires : voici les projets que nos équipes de parents mènent ou soutiennent régulièrement."
+  />
+  <section class="section">
+    <div class="conteneur">
+      <div class="grille">
+        {projets.map((projet) => <CarteProjet projet={projet} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

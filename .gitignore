@@ -1,0 +1,12 @@
+# dépendances et build
+node_modules/
+dist/
+.astro/
+
+# divers
+.DS_Store
+.env
+npm-debug.log*
+
+# dossier source interne (ne jamais publier : contient des données personnelles)
+API/

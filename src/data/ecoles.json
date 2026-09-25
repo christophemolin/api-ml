@@ -1,0 +1,14 @@
+[
+  { "id": "maternelle-bois-bonnet", "nom": "École maternelle Bois-Bonnet", "niveau": "maternelle", "email": "api78.boisbonnet@gmail.com" },
+  { "id": "maternelle-clos-laine", "nom": "École maternelle Clos Lainé", "niveau": "maternelle", "email": "apicloslaine@gmail.com" },
+  { "id": "maternelle-cocteau", "nom": "École maternelle Cocteau", "niveau": "maternelle", "email": "api.maternelle.cocteau@gmail.com" },
+  { "id": "maternelle-colbert", "nom": "École maternelle Colbert", "niveau": "maternelle", "email": "api.maternellecolbert@gmail.com" },
+  { "id": "maternelle-la-renarde", "nom": "École maternelle La Renarde", "niveau": "maternelle", "email": "api.larenarde@gmail.com" },
+  { "id": "maternelle-montebello", "nom": "École maternelle Montebello", "niveau": "maternelle", "email": "api.montebello@gmail.com" },
+  { "id": "elementaire-alain-ledreux", "nom": "École élémentaire Alain Ledreux", "niveau": "elementaire", "email": "api.ledreux@gmail.com" },
+  { "id": "elementaire-colbert", "nom": "École élémentaire Colbert", "niveau": "elementaire", "email": "api.elementaire.colbert@gmail.com" },
+  { "id": "elementaire-mansart", "nom": "École élémentaire Mansart", "niveau": "elementaire", "email": "api.elementaire.mansart@gmail.com" },
+  { "id": "elementaire-le-prieure", "nom": "École élémentaire Le Prieuré", "niveau": "elementaire", "email": "api.elementaire.leprieure@gmail.com" },
+  { "id": "college-cocteau", "nom": "Collège Jean Cocteau", "niveau": "college", "email": "api.collegecocteau@gmail.com" },
+  { "id": "college-le-prieure", "nom": "Collège Le Prieuré", "niveau": "college", "email": "APIcollegeleprieure@gmail.com" }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "peep",
+    "nom": "PEEP Maisons-Laffitte",
+    "categorie": "parents",
+    "description": "Association de parents d'élèves de l'enseignement public. Nous travaillons main dans la main dans plusieurs établissements de la ville (maternelles Bois-Bonnet et Cocteau, écoles Alain Ledreux, Colbert et du Prieuré, collèges Le Prieuré et Jean Cocteau) pour porter ensemble la voix des familles.",
+    "site": "https://peepmaisonslaffitte.wixsite.com/asso"
+  },
+  {
+    "id": "mairie",
+    "nom": "Mairie de Maisons-Laffitte",
+    "categorie": "institutions",
+    "description": "Nous siégeons aux commissions municipales liées à la vie scolaire (restauration, périscolaire, travaux…) et relayons les questions des parents auprès de la ville.",
+    "site": "https://www.maisonslaffitte.fr"
+  },
+  {
+    "id": "education-nationale",
+    "nom": "Éducation nationale",
+    "categorie": "institutions",
+    "description": "Les écoles et collèges de la ville, avec qui nous échangeons lors des conseils d'école et conseils d'administration. Retrouvez les informations nationales sur le site du ministère.",
+    "site": "https://www.education.gouv.fr"
+  },
+  {
+    "id": "academie-versailles",
+    "nom": "Académie de Versailles",
+    "categorie": "institutions",
+    "description": "L'académie dont dépendent les établissements de Maisons-Laffitte : calendrier scolaire, orientation, informations aux familles.",
+    "site": "https://www.ac-versailles.fr"
+  },
+  {
+    "id": "petits-bouchons",
+    "nom": "Les petits bouchons",
+    "categorie": "solidarite",
+    "description": "Collecte de bouchons en plastique dans les écoles : leur recyclage permet de financer des fauteuils roulants et du matériel adapté pour les personnes en situation de handicap."
+  },
+  {
+    "id": "pour-margot",
+    "nom": "Pour Margot",
+    "categorie": "solidarite",
+    "description": "Association qui récolte des fonds pour soutenir la recherche médicale contre les cancers de l'enfant."
+  }
+]

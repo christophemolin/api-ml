@@ -1,0 +1,182 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntetePage from '../components/EntetePage.astro';
+import site from '../data/site.json';
+import { niveaux } from '../navigation';
+
+const ecoles = await getCollection('ecoles');
+const ordre = Object.keys(niveaux);
+const lignes = ecoles
+  .map((e) => e.data)
+  .sort((a, b) => ordre.indexOf(a.niveau) - ordre.indexOf(b.niveau) || a.nom.localeCompare(b.nom, 'fr'));
+---
+
+<BaseLayout
+  title="Contacts"
+  description="Les adresses e-mail des équipes API de chaque école et collège de Maisons-Laffitte."
+>
+  <EntetePage
+    surtitre="Contacts"
+    titre="Écrivez à l'équipe de votre école"
+    intro="Une question, une idée, l'envie de nous rejoindre ? Chaque équipe API répond directement aux parents de son établissement."
+  />
+
+  <section class="section">
+    <div class="conteneur contacts">
+      <div class="tableau-conteneur">
+        <table class="tableau">
+          <caption>Adresses des équipes API par établissement</caption>
+          <thead>
+            <tr>
+              <th scope="col">Établissement</th>
+              <th scope="col">Niveau</th>
+              <th scope="col">E-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              lignes.map((ecole) => (
+                <tr>
+                  <th scope="row">{ecole.nom}</th>
+                  <td>{niveaux[ecole.niveau]}</td>
+                  <td>
+                    <a href={`mailto:${ecole.email}`}>{ecole.email}</a>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="carte contacts__general">
+        <h2>L'association</h2>
+        {
+          site.emailGeneral ? (
+            <p>
+              E-mail : <a href={`mailto:${site.emailGeneral}`}>{site.emailGeneral}</a>
+            </p>
+          ) : (
+            <p>Pour toute question générale, écrivez à l'équipe de l'établissement de votre enfant.</p>
+          )
+        }
+        {
+          site.facebook && (
+            <p>
+              <a class="bouton" href={site.facebook} rel="noopener" target="_blank">
+                Suivez-nous sur Facebook
+              </a>
+            </p>
+          )
+        }
+        <p><a href="/nous-rejoindre/">Pourquoi nous rejoindre ?</a></p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contacts {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .tableau-conteneur {
+    overflow-x: auto;
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre);
+  }
+
+  .tableau {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+  }
+
+  .tableau caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .tableau th,
+  .tableau td {
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--bordure);
+    vertical-align: top;
+  }
+
+  .tableau thead th {
+    background: var(--creme);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--texte-doux);
+  }
+
+  .tableau tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  .tableau tbody th {
+    font-weight: 700;
+  }
+
+  .tableau td:nth-child(2) {
+    color: var(--texte-doux);
+    white-space: nowrap;
+  }
+
+  .tableau td a {
+    overflow-wrap: break-word;
+  }
+
+  .contacts__general h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 860px) {
+    .contacts {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .tableau thead {
+      display: none;
+    }
+
+    .tableau tr {
+      display: block;
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid var(--bordure);
+    }
+
+    .tableau tbody tr:last-child {
+      border-bottom: 0;
+    }
+
+    .tableau th,
+    .tableau td {
+      display: block;
+      padding: 0;
+      border: 0;
+    }
+
+    .tableau td:nth-child(2) {
+      font-size: 0.9rem;
+    }
+
+    .tableau td a {
+      overflow-wrap: anywhere;
+    }
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import { navigation } from '../navigation';
+
+const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
+const estActif = (href: string) =>
+  href === '/' ? chemin === '/' : chemin === href.replace(/\/$/, '') || chemin.startsWith(href);
+---
+
+<header class="entete">
+  <div class="conteneur entete__barre">
+    <a href="/" class="entete__logo" aria-label="API Maisons-Laffitte, retour à l'accueil">
+      <img src="/logos/logo-api-texte.png" alt="API, Association des Parents Indépendants" width="1058" height="361" />
+    </a>
+
+    <button class="entete__burger" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="entete__burger-icone" aria-hidden="true"></span>
+      <span class="entete__burger-texte">Menu</span>
+    </button>
+
+    <nav id="menu-principal" class="menu" aria-label="Menu principal">
+      <ul>
+        {
+          navigation.map((lien) => (
+            <li>
+              <a
+                href={lien.href}
+                class:list={['menu__lien', { 'menu__lien--cta': lien.cta }]}
+                aria-current={estActif(lien.href) ? 'page' : undefined}
+              >
+                {lien.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const bouton = document.querySelector<HTMLButtonElement>('.entete__burger');
+  const menu = document.getElementById('menu-principal');
+  bouton?.addEventListener('click', () => {
+    const ouvert = bouton.getAttribute('aria-expanded') === 'true';
+    bouton.setAttribute('aria-expanded', String(!ouvert));
+    menu?.classList.toggle('menu--ouvert', !ouvert);
+  });
+</script>
+
+<style>
+  .entete {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgb(255 255 255 / 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .entete__barre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 76px;
+  }
+
+  .entete__logo img {
+    height: 48px;
+    width: auto;
+  }
+
+  .menu ul {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu__lien {
+    display: block;
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    color: var(--texte);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .menu__lien:hover {
+    background: var(--creme);
+    color: var(--rouge);
+  }
+
+  .menu__lien[aria-current='page'] {
+    color: var(--rouge);
+    background: var(--creme);
+  }
+
+  .menu__lien--cta {
+    background: var(--rouge);
+    color: var(--blanc);
+    margin-left: 0.5rem;
+  }
+
+  .menu__lien--cta:hover,
+  .menu__lien--cta[aria-current='page'] {
+    background: var(--rouge-fonce);
+    color: var(--blanc);
+  }
+
+  .entete__burger {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    font: inherit;
+    font-weight: 800;
+    color: var(--rouge);
+    background: var(--creme);
+    border: 0;
+    border-radius: 999px;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+  }
+
+  .entete__burger-icone,
+  .entete__burger-icone::before,
+  .entete__burger-icone::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .entete__burger-icone::before,
+  .entete__burger-icone::after {
+    content: '';
+    position: absolute;
+  }
+
+  .entete__burger-icone::before {
+    top: -6px;
+  }
+
+  .entete__burger-icone::after {
+    top: 6px;
+  }
+
+  @media (max-width: 940px) {
+    .entete__logo img {
+      height: 40px;
+    }
+
+    .entete__burger {
+      display: inline-flex;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--blanc);
+      border-bottom: 1px solid var(--bordure);
+      box-shadow: var(--ombre);
+      padding: 0.75rem 20px 1.25rem;
+    }
+
+    .menu--ouvert {
+      display: block;
+    }
+
+    .menu ul {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .menu__lien {
+      padding: 0.75rem 1rem;
+    }
+
+    .menu__lien--cta {
+      margin: 0.5rem 0 0;
+      text-align: center;
+    }
+  }
+</style>

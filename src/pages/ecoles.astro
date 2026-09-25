@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntetePage from '../components/EntetePage.astro';
+import { niveaux } from '../navigation';
+
+const ecoles = await getCollection('ecoles');
+const groupes = (Object.keys(niveaux) as (keyof typeof niveaux)[]).map((niveau) => ({
+  niveau,
+  titre: niveaux[niveau],
+  ecoles: ecoles.filter((e) => e.data.niveau === niveau).sort((a, b) => a.data.nom.localeCompare(b.data.nom, 'fr')),
+}));
+---
+
+<BaseLayout
+  title="Écoles"
+  description="Les écoles maternelles, élémentaires et collèges de Maisons-Laffitte où l'API est présente."
+>
+  <EntetePage
+    surtitre="Nos écoles"
+    titre="Une équipe API dans chaque établissement"
+    intro={`L'API est présente dans ${ecoles.length} écoles et collèges publics de Maisons-Laffitte. Chaque établissement a sa propre équipe de parents, joignable par e-mail.`}
+  />
+
+  <section class="section">
+    <div class="conteneur niveaux">
+      {
+        groupes.map((groupe) => (
+          <div class="niveau">
+            <h2>
+              {groupe.titre} <span class="niveau__compte">{groupe.ecoles.length}</span>
+            </h2>
+            <ul class="grille ecoles">
+              {groupe.ecoles.map((ecole) => (
+                <li class="carte ecole">
+                  <h3>{ecole.data.nom}</h3>
+                  <p>
+                    <a href={`mailto:${ecole.data.email}`}>{ecole.data.email}</a>
+                  </p>
+                  {ecole.data.site && (
+                    <p>
+                      <a href={ecole.data.site} rel="noopener" target="_blank">
+                        Site de l'école
+                      </a>
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .niveau + .niveau {
+    margin-top: 3rem;
+  }
+
+  .niveau h2 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .niveau__compte {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding-inline: 0.5rem;
+    border-radius: 999px;
+    background: var(--creme-fonce);
+    color: var(--rouge);
+    font-size: 1rem;
+  }
+
+  .ecoles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ecole {
+    border-top: 4px solid var(--rouge);
+  }
+
+  .ecole p {
+    margin: 0.25rem 0 0;
+    overflow-wrap: anywhere;
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntetePage from '../components/EntetePage.astro';
+
+const partenaires = await getCollection('partenaires');
+const categories = [
+  {
+    id: 'parents',
+    titre: 'Associations de parents',
+    intro: "Nous travaillons en bonne intelligence avec les autres associations de parents d'élèves de la ville.",
+  },
+  {
+    id: 'institutions',
+    titre: 'Institutions',
+    intro: 'La ville et l\'Éducation nationale, nos interlocuteurs au quotidien.',
+  },
+  {
+    id: 'solidarite',
+    titre: 'Solidarité',
+    intro: 'Des associations que nous soutenons avec les familles, à travers des collectes et des actions dans les écoles.',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Partenariats"
+  description="Les partenaires de l'API : PEEP Maisons-Laffitte, la mairie, l'Éducation nationale et des associations solidaires."
+>
+  <EntetePage
+    surtitre="Partenariats"
+    titre="Ensemble, on va plus loin"
+    intro="L'API agit aux côtés d'autres associations de parents, des institutions et d'associations solidaires."
+  />
+
+  <section class="section">
+    <div class="conteneur">
+      {
+        categories.map((categorie) => {
+          const liste = partenaires.filter((p) => p.data.categorie === categorie.id);
+          return (
+            liste.length > 0 && (
+              <div class="categorie">
+                <h2>{categorie.titre}</h2>
+                <p class="categorie__intro">{categorie.intro}</p>
+                <div class="grille">
+                  {liste.map((p) => (
+                    <article class="carte partenaire">
+                      <h3>{p.data.nom}</h3>
+                      <p>{p.data.description}</p>
+                      {p.data.site && (
+                        <p class="partenaire__lien">
+                          <a href={p.data.site} rel="noopener" target="_blank">
+                            Visiter le site →
+                          </a>
+                        </p>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .categorie + .categorie {
+    margin-top: 3.5rem;
+  }
+
+  .categorie h2 {
+    margin-top: 0;
+  }
+
+  .categorie__intro {
+    color: var(--texte-doux);
+    max-width: 60ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .partenaire {
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid var(--orange);
+  }
+
+  .partenaire p {
+    color: var(--texte-doux);
+  }
+
+  .partenaire__lien {
+    margin-top: auto;
+    font-weight: 700;
+  }
+</style>

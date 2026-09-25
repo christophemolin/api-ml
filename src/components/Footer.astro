@@ -1,0 +1,123 @@
+---
+import site from '../data/site.json';
+import { navigation } from '../navigation';
+
+const annee = new Date().getFullYear();
+---
+
+<footer class="pied">
+  <img class="pied__frise" src="/images/illustrations/pommes-frise.png" alt="" width="800" height="288" loading="lazy" />
+  <div class="pied__fond">
+    <div class="conteneur pied__grille">
+      <div>
+        <img class="pied__logo" src="/logos/logo-api-simple.png" alt="API, Association des Parents Indépendants" width="1270" height="395" loading="lazy" />
+        <p class="pied__slogan">{site.slogan}</p>
+      </div>
+
+      <nav aria-label="Pied de page">
+        <h2 class="pied__titre">Le site</h2>
+        <ul>
+          {navigation.map((lien) => <li><a href={lien.href}>{lien.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="pied__titre">Nous suivre</h2>
+        <ul>
+          {site.facebook && (
+            <li><a href={site.facebook} rel="noopener" target="_blank">Facebook</a></li>
+          )}
+          {site.emailGeneral && (
+            <li><a href={`mailto:${site.emailGeneral}`}>{site.emailGeneral}</a></li>
+          )}
+          <li><a href="/contacts/">Écrire à l'équipe de votre école</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="conteneur pied__bas">
+      <p>© {annee} {site.nomComplet}. Association locale, apolitique et sans cotisation.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pied {
+    margin-top: auto;
+  }
+
+  .pied__frise {
+    width: min(420px, 70%);
+    margin: 0 0 -6px auto;
+    padding-right: 20px;
+  }
+
+  .pied__fond {
+    background: var(--rouge);
+    color: rgb(255 255 255 / 0.9);
+    padding-top: 3rem;
+  }
+
+  .pied__grille {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+
+  .pied__logo {
+    width: 220px;
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-bottom: 1rem;
+  }
+
+  .pied__slogan {
+    font-style: italic;
+    max-width: 32ch;
+  }
+
+  .pied__titre {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blanc);
+    margin: 0 0 0.75rem;
+  }
+
+  .pied ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pied li {
+    margin-bottom: 0.35rem;
+  }
+
+  .pied a {
+    color: var(--blanc);
+    text-decoration: none;
+  }
+
+  .pied a:hover {
+    text-decoration: underline;
+    color: var(--blanc);
+  }
+
+  .pied__bas {
+    border-top: 1px solid rgb(255 255 255 / 0.2);
+    margin-top: 2.5rem;
+    padding-block: 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .pied__bas p {
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .pied__grille {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

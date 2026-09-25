@@ -1,0 +1,260 @@
+/* ------------------------------------------------------------------
+   Styles globaux du site API Maisons-Laffitte
+   Couleurs reprises du logo : rouge API et étoile orange.
+   ------------------------------------------------------------------ */
+
+:root {
+  --rouge: #c0262d;
+  --rouge-fonce: #9e1d23;
+  --orange: #f08a24;
+  --prune: #a3284f;
+  --creme: #fff6ee;
+  --creme-fonce: #fbe9da;
+  --texte: #2b2626;
+  --texte-doux: #6b6161;
+  --bordure: #eeded3;
+  --blanc: #ffffff;
+
+  --rayon: 18px;
+  --ombre: 0 6px 24px rgb(120 40 30 / 0.08);
+  --largeur: 1120px;
+  --police: 'Nunito Variable', 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--police);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--texte);
+  background: var(--blanc);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--rouge);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--rouge-fonce);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--texte);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 2rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Mise en page ---------- */
+
+.conteneur {
+  width: 100%;
+  max-width: var(--largeur);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.section {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.section--creme {
+  background: var(--creme);
+}
+
+.entete-page {
+  background: var(--creme);
+  padding-block: clamp(2.5rem, 6vw, 4rem) clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.entete-page p:not(.surtitre) {
+  font-size: 1.15rem;
+  color: var(--texte-doux);
+  max-width: 60ch;
+  margin: 0;
+}
+
+.surtitre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+
+.surtitre + h1,
+.surtitre + h2 {
+  margin-top: 0;
+}
+
+.surtitre::before {
+  content: '★';
+  font-size: 1rem;
+}
+
+/* ---------- Texte riche (Markdown) ---------- */
+
+.prose {
+  max-width: 70ch;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.prose li {
+  margin-bottom: 0.35rem;
+}
+
+.prose li::marker {
+  color: var(--rouge);
+}
+
+.prose img {
+  border-radius: var(--rayon);
+  margin-block: 1.5rem;
+}
+
+.prose strong {
+  color: var(--texte);
+}
+
+/* ---------- Boutons ---------- */
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  background: var(--rouge);
+  color: var(--blanc);
+  border: 2px solid var(--rouge);
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.bouton:hover {
+  background: var(--rouge-fonce);
+  border-color: var(--rouge-fonce);
+  color: var(--blanc);
+  transform: translateY(-1px);
+}
+
+.bouton--contour {
+  background: transparent;
+  color: var(--rouge);
+}
+
+.bouton--contour:hover {
+  background: var(--rouge);
+  color: var(--blanc);
+}
+
+/* ---------- Grilles et cartes ---------- */
+
+.grille {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+
+.carte {
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  box-shadow: var(--ombre);
+}
+
+.carte p:last-child {
+  margin-bottom: 0;
+}
+
+/* Illustrations dessinées à la main : léger effet « polaroid » */
+.dessin {
+  background: var(--blanc);
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: var(--ombre);
+  border: 1px solid var(--bordure);
+}
+
+.dessin img {
+  border-radius: 6px;
+}
+
+.dessin--penche-g {
+  transform: rotate(-2deg);
+}
+
+.dessin--penche-d {
+  transform: rotate(2deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .bouton {
+    transition: none;
+  }
+}

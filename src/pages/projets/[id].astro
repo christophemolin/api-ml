@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formaterDate } from '../../dates';
+
+export async function getStaticPaths() {
+  const projets = await getCollection('projets', ({ data }) => !data.draft);
+  return projets.map((projet) => ({ params: { id: projet.id }, props: { projet } }));
+}
+
+const { projet } = Astro.props;
+const { Content } = await render(projet);
+const { title, date, summary, image, imageAlt } = projet.data;
+---
+
+<BaseLayout title={title} description={summary} image={image}>
+  <article>
+    <header class="entete-page">
+      <div class="conteneur">
+        <p class="retour"><a href="/projets/">← Tous les projets</a></p>
+        <p class="surtitre"><time datetime={date.toISOString()}>{formaterDate(date)}</time></p>
+        <h1>{title}</h1>
+        <p>{summary}</p>
+      </div>
+    </header>
+    <div class="section">
+      <div class="conteneur projet-detail">
+        {
+          image && (
+            <div class="dessin dessin--penche-g projet-detail__image">
+              <img src={image} alt={imageAlt ?? ''} />
+            </div>
+          )
+        }
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .retour {
+    margin-bottom: 1rem !important;
+    font-weight: 700;
+  }
+
+  .retour a {
+    text-decoration: none;
+  }
+
+  .projet-detail {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .projet-detail__image {
+    order: 2;
+    position: sticky;
+    top: 100px;
+  }
+
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  @media (max-width: 820px) {
+    .projet-detail {
+      grid-template-columns: 1fr;
+    }
+
+    .projet-detail__image {
+      order: 0;
+      position: static;
+      max-width: 480px;
+    }
+  }
+</style>
