@@ -2,8 +2,8 @@
 title: "Conseils, commissions et dialogue avec la mairie"
 date: 2026-09-01
 summary: "Tout au long de l'année, nos représentants siègent aux conseils d'école, aux instances des collèges et aux commissions de la ville pour faire entendre la voix des familles."
-image: "/images/illustrations/conseils.jpg"
-imageAlt: "Dessin d'un parent tenant des documents"
+image: "/images/illustrations/conseils.svg"
+imageAlt: "Illustration : des parents élus autour d’une table de réunion"
 ---
 
 Être parent élu, c'est surtout un travail régulier tout au long de l'année, en lien avec les écoles, les collèges, les centres de loisirs et la mairie.

@@ -57,6 +57,11 @@ const categories = [
                 <div class="grille">
                   {liste.map((p) => (
                     <article class="carte partenaire">
+                      {p.data.logo && (
+                        <div class="partenaire__logo">
+                          <img src={p.data.logo} alt={`Logo ${p.data.nom}`} loading="lazy" />
+                        </div>
+                      )}
                       <h3>{p.data.nom}</h3>
                       <p>{p.data.description}</p>
                       {(p.data.site || p.data.reseaux) && (
@@ -118,6 +123,20 @@ const categories = [
     display: flex;
     flex-direction: column;
     border-left: 4px solid var(--orange);
+  }
+
+  .partenaire__logo {
+    height: 88px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .partenaire__logo img {
+    max-height: 100%;
+    max-width: min(100%, 240px);
+    width: auto;
+    object-fit: contain;
   }
 
   .partenaire p {

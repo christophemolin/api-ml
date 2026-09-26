@@ -31,13 +31,19 @@
     "id": "caisse-des-ecoles",
     "nom": "Caisse des écoles de Maisons-Laffitte",
     "categorie": "institutions",
-    "description": "Elle réunit parents, enseignants, élus et mairie pour financer les projets des écoles publiques maternelles et élémentaires : ateliers dans les classes, séjour de fin d'année des CM2, tombola et fête des écoles. L'API y a tenu le stand de crêpes lors de la fête des écoles 2026."
+    "description": "Elle réunit parents, enseignants, élus et mairie pour financer les projets des écoles publiques maternelles et élémentaires : ateliers dans les classes, séjour de fin d'année des CM2, tombola et fête des écoles. L'API y a tenu le stand de crêpes lors de la fête des écoles 2026.",
+    "logo": "/images/partenaires/caisse-des-ecoles.jpg",
+    "site": "https://www.maisonslaffitte.fr/Caisse-des-%C3%A9coles/10174/",
+    "reseaux": {
+      "facebook": "https://www.facebook.com/groups/175020896529796/"
+    }
   },
   {
     "id": "handi-cap-prevention",
     "nom": "Handi-Cap-Prévention",
     "categorie": "solidarite",
     "description": "Association d'Île-de-France qui collecte les bouchons et couvercles en plastique (opération « Roulez petits bouchons »). Leur recyclage finance du matériel pour les personnes en situation de handicap : 100 % des fonds collectés leur sont reversés.",
+    "logo": "/images/partenaires/handi-cap-prevention.jpg",
     "site": "https://www.handicaprevention.com",
     "reseaux": {
       "facebook": "https://www.facebook.com/handicaprevention.roulezpetitsbouchons",
@@ -50,6 +56,7 @@
     "nom": "Imagine for Margo",
     "categorie": "solidarite",
     "description": "Association de parents créée en 2011 qui se mobilise contre les cancers des enfants. Elle a déjà consacré plus de 30 millions d'euros à la recherche en oncologie pédiatrique, notamment grâce à sa course solidaire « Enfants sans Cancer ».",
+    "logo": "/images/partenaires/imagine-for-margo.svg",
     "site": "https://imagineformargo.org",
     "reseaux": {
       "facebook": "https://www.facebook.com/imagine.for.margo/",

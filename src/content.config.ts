@@ -92,6 +92,8 @@ const partenaires = defineCollection({
     categorie: z.enum(['parents', 'institutions', 'solidarite', 'soutien']),
     description: z.string(),
     site: z.url().optional(),
+    // Logo du partenaire, déposé dans public/images/partenaires/ (facultatif)
+    logo: z.string().optional(),
     // Liens vers les réseaux sociaux du partenaire (tous facultatifs)
     reseaux: z
       .object({

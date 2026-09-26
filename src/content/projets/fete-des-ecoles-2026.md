@@ -2,8 +2,8 @@
 title: "Fête des écoles 2026 : le stand de crêpes"
 date: 2026-06-13
 summary: "Le 13 juin 2026, sur l'île de la Commune, l'API a tenu le stand de crêpes de la fête des écoles : 760 € de bénéfice reversés à la Caisse des écoles."
-image: "/images/illustrations/evenements.jpg"
-imageAlt: "Dessin d'un stand API tenu par des parents"
+image: "/images/illustrations/evenements.svg"
+imageAlt: "Illustration : un stand de fête tenu par deux parents bénévoles"
 ---
 
 Le **samedi 13 juin 2026**, la **fête des écoles** de Maisons-Laffitte s'est tenue sur l'**île de la Commune**.

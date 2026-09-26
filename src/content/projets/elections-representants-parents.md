@@ -2,8 +2,8 @@
 title: "Élections des représentants de parents d'élèves"
 date: 2026-10-09
 summary: "Chaque année en octobre, les parents élisent leurs représentants aux conseils d'école et aux conseils d'administration des collèges. L'API présente une liste dans chaque établissement. Scrutin 2026 : vendredi 9 ou samedi 10 octobre."
-image: "/images/illustrations/enfants.jpg"
-imageAlt: "Dessin d'enfants qui jouent au ballon dans la cour"
+image: "/images/illustrations/enfants.svg"
+imageAlt: "Illustration : des enfants jouent au ballon devant leur école"
 ---
 
 Les **élections des représentants de parents d'élèves** se tiennent chaque année au début du mois d'octobre, dans toutes les écoles et tous les collèges publics.

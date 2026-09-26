@@ -2,8 +2,8 @@
 title: "Livret d'accueil des écoles"
 date: 2026-09-01
 summary: "Pour aider les familles à bien démarrer l'année, des équipes API préparent un livret d'accueil qui présente l'école, son fonctionnement et son équipe."
-image: "/images/illustrations/lien.jpg"
-imageAlt: "Dessin d'une maman au téléphone"
+image: "/images/illustrations/lien.svg"
+imageAlt: "Illustration : la maison, l’école et la mairie reliées entre elles"
 ---
 
 **Informer aujourd'hui pour bien démarrer demain !**

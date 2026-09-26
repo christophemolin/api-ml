@@ -4,19 +4,19 @@ description: "Pourquoi et comment rejoindre l'une des équipes API dans les éco
 points:
   - titre: "Veiller au bien-être de tous les enfants"
     texte: "Être attentif au quotidien des élèves : sécurité, cantine, périscolaire, conditions d'apprentissage."
-    image: "/images/illustrations/bien-etre.jpg"
+    image: "/images/illustrations/bien-etre.svg"
   - titre: "Être force de proposition"
     texte: "Participer aux conseils d'école, aux conseils d'administration des collèges et aux commissions municipales, et y défendre des idées concrètes."
-    image: "/images/illustrations/conseils.jpg"
+    image: "/images/illustrations/conseils.svg"
   - titre: "Assurer un lien efficace"
     texte: "Entre les parents, l'école et la municipalité : informer, écouter, relayer."
-    image: "/images/illustrations/lien.jpg"
+    image: "/images/illustrations/lien.svg"
   - titre: "S'impliquer dans la vie de l'école"
     texte: "Kermesses, fête des écoles, chalets de Noël, collectes… Des moments de partage avec les enfants et les familles."
-    image: "/images/illustrations/evenements.jpg"
+    image: "/images/illustrations/evenements.svg"
   - titre: "Une association locale et indépendante"
     texte: "Apolitique et non affiliée, l'API agit au plus près des familles de Maisons-Laffitte. Chacun participe selon ses disponibilités."
-    image: "/images/illustrations/association.jpg"
+    image: "/images/illustrations/association.svg"
 ---
 
 ## Choisissez votre niveau d'engagement

@@ -238,6 +238,7 @@ Ouvrez `src/data/partenaires.json` :
 | `categorie` | `parents` (associations de parents), `institutions`, `solidarite` (associations aidées) ou `soutien` (partenaires qui reversent une partie des achats à l'API), sans accent |
 | `description` | Quelques phrases de présentation |
 | `site` | *(facultatif)* Adresse du site, commençant par `https://`. Supprimez la ligne s'il n'y en a pas, **en retirant aussi la virgule** à la fin de la ligne précédente. |
+| `logo` | *(facultatif)* Logo du partenaire, déposé dans `public/images/partenaires/` (ex. `"/images/partenaires/mon-logo.png"`). Formats : PNG, JPG ou SVG, idéalement au moins 200 pixels de haut. Il s'affiche en haut de la carte. |
 | `reseaux` | *(facultatif)* Liens vers les réseaux sociaux du partenaire (voir ci-dessous) |
 
 ### Ajouter les réseaux sociaux d'un partenaire
