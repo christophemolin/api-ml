@@ -1,20 +1,33 @@
 ---
-title: "Conseils d'école et commissions municipales"
-date: 2025-09-01
-summary: "Tout au long de l'année, nos représentants participent aux conseils d'école et aux commissions de la ville pour faire entendre la voix des familles."
+title: "Conseils, commissions et dialogue avec la mairie"
+date: 2026-09-01
+summary: "Tout au long de l'année, nos représentants siègent aux conseils d'école, aux instances des collèges et aux commissions de la ville pour faire entendre la voix des familles."
 image: "/images/illustrations/conseils.jpg"
 imageAlt: "Dessin d'un parent tenant des documents"
 ---
 
-Être parent élu, c'est surtout un travail régulier tout au long de l'année.
+Être parent élu, c'est surtout un travail régulier tout au long de l'année, en lien avec les écoles, les collèges, les centres de loisirs et la mairie.
 
-## Les conseils d'école
+## Dans les écoles
 
-Trois fois par an, nous préparons les conseils d'école en recueillant vos questions, puis nous vous en faisons un **compte rendu**.
+- **Conseils d'école** : nous faisons remonter vos questions pour l'ordre du jour, puis nous redescendons les informations aux parents, en complément du compte rendu officiel.
+- **Relais entre la direction et les parents** : école, périscolaire, étude, centre de loisirs, restauration.
+- **Accompagnement des sorties scolaires**.
 
-## Les commissions municipales
+## Dans les collèges
 
-L'API participe aux commissions de la ville de Maisons-Laffitte sur la **restauration scolaire**, le **périscolaire** et les **travaux** dans les écoles. Nous y relayons les remarques des parents et suivons les décisions prises.
+- Conseils de classe, avec un compte rendu rédigé par 2 parents à chaque trimestre.
+- Conseil d'administration, conseil de discipline.
+- Commission restauration et commission éducative.
+
+## Avec la mairie
+
+Un dialogue régulier pour des écoles de qualité à Maisons-Laffitte :
+
+- **Périscolaire** : accueils du matin et du soir, activités, étude surveillée, vacances scolaires.
+- **Restauration scolaire** : qualité des repas, équilibre alimentaire, lutte contre le gaspillage, échanges avec le prestataire.
+- **PEDT (Projet éducatif territorial)** : coordination des temps éducatifs (école, périscolaire, associations) et des actions pour la jeunesse.
+- **Conseils d'administration des collèges** : budget et moyens, projet d'établissement, conditions d'accueil, travaux et équipements.
 
 ## Vos questions
 

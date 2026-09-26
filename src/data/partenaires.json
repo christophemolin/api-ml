@@ -3,15 +3,15 @@
     "id": "peep",
     "nom": "PEEP Maisons-Laffitte",
     "categorie": "parents",
-    "description": "Association de parents d'élèves de l'enseignement public. Nous travaillons main dans la main dans plusieurs établissements de la ville (maternelles Bois-Bonnet et Cocteau, écoles Alain Ledreux, Colbert et du Prieuré, collèges Le Prieuré et Jean Cocteau) pour porter ensemble la voix des familles.",
+    "description": "Association de parents d'élèves de l'enseignement public. Deux associations pour une même ville : nous travaillons main dans la main dans les écoles et collèges de Maisons-Laffitte (organisation des élections, conseils d'école, kermesses, fête des écoles, chalets de Noël…) au service de tous les enfants.",
     "site": "https://peepmaisonslaffitte.wixsite.com/asso"
   },
   {
     "id": "mairie",
     "nom": "Mairie de Maisons-Laffitte",
     "categorie": "institutions",
-    "description": "Nous siégeons aux commissions municipales liées à la vie scolaire (restauration, périscolaire, travaux…) et relayons les questions des parents auprès de la ville.",
-    "site": "https://www.maisonslaffitte.fr"
+    "description": "Un dialogue régulier avec la ville : nous participons aux commissions sur le périscolaire, la restauration scolaire et le Projet éducatif territorial (PEDT). Retrouvez aussi l'API dans l'annuaire des associations de la ville.",
+    "site": "https://www.maisonslaffitte.fr/Associations/10192/12101"
   },
   {
     "id": "education-nationale",
@@ -26,6 +26,12 @@
     "categorie": "institutions",
     "description": "L'académie dont dépendent les établissements de Maisons-Laffitte : calendrier scolaire, orientation, informations aux familles.",
     "site": "https://www.ac-versailles.fr"
+  },
+  {
+    "id": "caisse-des-ecoles",
+    "nom": "Caisse des écoles de Maisons-Laffitte",
+    "categorie": "institutions",
+    "description": "Elle réunit parents, enseignants, élus et mairie pour financer les projets des écoles publiques maternelles et élémentaires : ateliers dans les classes, séjour de fin d'année des CM2, tombola et fête des écoles. L'API y a tenu le stand de crêpes lors de la fête des écoles 2026."
   },
   {
     "id": "handi-cap-prevention",
@@ -50,5 +56,26 @@
       "instagram": "https://www.instagram.com/imagineformargo_officiel/",
       "linkedin": "https://www.linkedin.com/company/imagine-for-margo/"
     }
+  },
+  {
+    "id": "rentree-discount",
+    "nom": "Rentrée Discount",
+    "categorie": "soutien",
+    "description": "Les listes de fournitures scolaires de chaque classe, prêtes à commander en un clic et modifiables. Une partie des ventes est reversée à l'API. Codes établissement : Mansart 26NA1S15, Ledreux 26RA1S3, Collège Le Prieuré 26NA2L3 (Colbert : code à venir).",
+    "site": "https://www.rentreediscount.com/LISTES-SCOLAIRES.html"
+  },
+  {
+    "id": "a-qui-s",
+    "nom": "A-Qui-S",
+    "categorie": "soutien",
+    "description": "Étiquettes pour vêtements et objets, tampons textiles, sacs, gourdes et boîtes à goûter personnalisés. Avec le code API MAI0492, jusqu'à 15 % de remise pour les familles, et 15 % du montant des commandes reversé à l'association.",
+    "site": "https://www.a-qui-s.fr/"
+  },
+  {
+    "id": "helloasso",
+    "nom": "HelloAsso",
+    "categorie": "soutien",
+    "description": "La plateforme de paiement en ligne que nous utilisons pour nos ventes solidaires au profit des écoles : t-shirts et casquettes pour la kermesse de l'école Ledreux, chocolats de Pâques pour la maternelle Cocteau…",
+    "site": "https://www.helloasso.com/"
   }
 ]

@@ -29,6 +29,15 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    // Valeurs de l'association (page d'accueil, optionnel)
+    valeurs: z
+      .array(
+        z.object({
+          titre: z.string(),
+          texte: z.string(),
+        }),
+      )
+      .default([]),
     // Blocs illustrés affichés sous forme de cartes (optionnel)
     points: z
       .array(
@@ -62,8 +71,16 @@ const ecoles = defineCollection({
   schema: z.object({
     nom: z.string(),
     niveau: z.enum(['maternelle', 'elementaire', 'college']),
+    // E-mail de l'équipe API de l'établissement
     email: z.email(),
+    // Informations sur l'établissement (toutes facultatives)
+    adresse: z.string().optional(),
+    telephone: z.string().optional(),
+    emailEcole: z.email().optional(),
     site: z.url().optional(),
+    photo: z.string().optional(),
+    eleves: z.number().int().positive().optional(),
+    classes: z.number().int().positive().optional(),
   }),
 });
 
@@ -72,7 +89,7 @@ const partenaires = defineCollection({
   loader: fichierJson('./src/data/partenaires.json'),
   schema: z.object({
     nom: z.string(),
-    categorie: z.enum(['parents', 'institutions', 'solidarite']),
+    categorie: z.enum(['parents', 'institutions', 'solidarite', 'soutien']),
     description: z.string(),
     site: z.url().optional(),
     // Liens vers les réseaux sociaux du partenaire (tous facultatifs)

@@ -1,23 +1,21 @@
 ---
 title: "Les chalets de Noël"
 date: 2025-12-12
-summary: "Chaque mois de décembre, les parents API et PEEP tiennent des chalets gourmands à la sortie des écoles pour financer des projets pour les enfants."
+summary: "En décembre, les parents API et PEEP organisent et animent les chalets de Noël : un moment convivial pour les enfants et les familles, qui permet de financer des projets pour les écoles."
 image: "/images/projets/noel-api-peep.png"
 imageAlt: "Logos API et PEEP aux couleurs de Noël"
 ---
 
-À l'approche des fêtes, les équipes de parents **API** et **PEEP** installent des **chalets de Noël** devant les écoles de Maisons-Laffitte.
+À l'approche des fêtes, les équipes de parents **API** et **PEEP** se mobilisent, en lien avec la mairie, pour les **chalets de Noël**.
 
-Au programme : chocolats chauds, crêpes, gâteaux faits maison et petites décorations préparées par les familles.
+- **Organisation et animations** : les parents préparent et tiennent les chalets.
+- **Participation des familles** : chacun peut donner un coup de main, même pour une heure.
+- **Des moments de convivialité** pour les enfants.
 
-## À quoi sert l'argent récolté ?
+## À quoi servent les fonds récoltés ?
 
-Les bénéfices sont intégralement reversés aux écoles pour financer des **sorties scolaires**, du **matériel pédagogique** ou des **projets de classe**.
+Les recettes des chalets sont affectées à l'école concernée et financent des projets pour les élèves.
 
 ## Comment aider ?
-
-- Préparer un gâteau ou des crêpes
-- Tenir le chalet pendant une heure
-- Venir en famille le jour J !
 
 Pour participer, écrivez à l'équipe API de votre école (voir la page [Contacts](/contacts/)).

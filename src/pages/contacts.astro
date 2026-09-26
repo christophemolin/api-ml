@@ -27,12 +27,12 @@ const lignes = ecoles
     <div class="conteneur contacts">
       <div class="tableau-conteneur">
         <table class="tableau">
-          <caption>Adresses des équipes API par établissement</caption>
+          <caption>Adresses e-mail des équipes API par établissement</caption>
           <thead>
             <tr>
               <th scope="col">Établissement</th>
               <th scope="col">Niveau</th>
-              <th scope="col">E-mail</th>
+              <th scope="col">E-mail de l'équipe API</th>
             </tr>
           </thead>
           <tbody>
@@ -69,6 +69,18 @@ const lignes = ecoles
                 <IconeReseau reseau="facebook" taille={22} couleur />
                 Suivez-nous sur Facebook
               </a>
+            </p>
+          )
+        }
+        <p>
+          Des <strong>groupes WhatsApp</strong> par école permettent d'échanger rapidement entre parents : demandez à
+          l'équipe API de votre établissement de vous y ajouter.
+        </p>
+        {
+          site.annuaireVille && (
+            <p>
+              Retrouvez aussi l'API dans l'
+              <a href={site.annuaireVille} rel="noopener" target="_blank">annuaire des associations de la ville</a>.
             </p>
           )
         }

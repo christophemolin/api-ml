@@ -160,13 +160,21 @@ Le projet apparaît automatiquement sur la page **Projets**. S'il fait partie de
 
 ## 6. Modifier un contact ou ajouter une école
 
-Ouvrez `src/data/ecoles.json`. Chaque école est décrite sur une ligne :
+Ouvrez `src/data/ecoles.json`. Chaque école est décrite dans un bloc `{ … }` :
 
 ```json
-[
-  { "id": "maternelle-colbert", "nom": "École maternelle Colbert", "niveau": "maternelle", "email": "api.maternellecolbert@gmail.com" },
-  { "id": "college-cocteau", "nom": "Collège Jean Cocteau", "niveau": "college", "email": "api.collegecocteau@gmail.com" }
-]
+{
+  "id": "maternelle-colbert",
+  "nom": "École maternelle Jean-Baptiste Colbert",
+  "niveau": "maternelle",
+  "email": "api.maternellecolbert@gmail.com",
+  "adresse": "Place Colbert, 78600 Maisons-Laffitte",
+  "telephone": "01 34 93 85 26",
+  "emailEcole": "ce.0781281U@ac-versailles.fr",
+  "photo": "/images/ecoles/maternelle-colbert.jpg",
+  "eleves": 74,
+  "classes": 3
+}
 ```
 
 | Champ | Explication |
@@ -174,12 +182,19 @@ Ouvrez `src/data/ecoles.json`. Chaque école est décrite sur une ligne :
 | `id` | Identifiant **unique**, en minuscules, sans accents ni espaces |
 | `nom` | Nom affiché de l'établissement |
 | `niveau` | **Une seule** de ces trois valeurs : `maternelle`, `elementaire` ou `college` (sans accent) |
-| `email` | Adresse e-mail de l'équipe API |
-| `site` | *(facultatif)* Adresse du site de l'école, commençant par `https://` |
+| `email` | Adresse e-mail de l'**équipe API** (affichée sur les pages Écoles et Contacts) |
+| `adresse` | *(facultatif)* Adresse postale |
+| `telephone` | *(facultatif)* Téléphone de l'établissement |
+| `emailEcole` | *(facultatif)* E-mail officiel de l'établissement |
+| `site` | *(facultatif)* Site de l'établissement, commençant par `https://` |
+| `photo` | *(facultatif)* Photo de l'école, déposée dans `public/images/ecoles/` (même principe que les images de projets, [section 4](#4-ajouter-un-projet)) |
+| `eleves`, `classes` | *(facultatif)* Effectifs de l'année : **un nombre sans guillemets** (ex. `74`, pas `"74"`) |
+
+👉 **À chaque rentrée**, pensez à mettre à jour les effectifs (`eleves`, `classes`) et les e-mails des équipes.
 
 - **Changer un e-mail** : modifiez simplement le texte entre guillemets après `"email":`.
-- **Ajouter une école** : copiez une ligne existante, collez-la juste en dessous et modifiez les valeurs.
-- **Retirer une école** : supprimez sa ligne.
+- **Ajouter une école** : copiez un bloc `{ … }` existant, collez-le juste en dessous (avec une virgule entre les deux blocs) et modifiez les valeurs.
+- **Retirer une école** : supprimez son bloc.
 
 Les pages **Écoles** et **Contacts** sont mises à jour toutes les deux, et les écoles y sont triées automatiquement.
 
@@ -220,7 +235,7 @@ Ouvrez `src/data/partenaires.json` :
 |---|---|
 | `id` | Identifiant unique (minuscules, sans accents ni espaces) |
 | `nom` | Nom affiché |
-| `categorie` | `parents` (associations de parents), `institutions` ou `solidarite` (sans accent) |
+| `categorie` | `parents` (associations de parents), `institutions`, `solidarite` (associations aidées) ou `soutien` (partenaires qui reversent une partie des achats à l'API), sans accent |
 | `description` | Quelques phrases de présentation |
 | `site` | *(facultatif)* Adresse du site, commençant par `https://`. Supprimez la ligne s'il n'y en a pas, **en retirant aussi la virgule** à la fin de la ligne précédente. |
 | `reseaux` | *(facultatif)* Liens vers les réseaux sociaux du partenaire (voir ci-dessous) |

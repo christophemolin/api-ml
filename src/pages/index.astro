@@ -20,8 +20,8 @@ const ecoles = await getCollection('ecoles');
   <section class="hero">
     <div class="conteneur hero__grille">
       <div class="hero__texte">
-        <p class="surtitre">Maisons-Laffitte · Maternelles, élémentaires et collèges</p>
-        <h1>Des parents engagés pour l'école de nos enfants</h1>
+        <p class="surtitre">Depuis 1994 à Maisons-Laffitte</p>
+        <h1>Des parents engagés pour nos enfants</h1>
         <p class="hero__slogan">{site.slogan}.</p>
         <div class="hero__actions">
           <a class="bouton" href="/nous-rejoindre/">Nous rejoindre</a>
@@ -51,15 +51,34 @@ const ecoles = await getCollection('ecoles');
 
   <section class="section section--creme">
     <div class="conteneur">
-      <p class="surtitre">Notre rôle</p>
-      <h2>Au service des enfants, entre les familles, l'école et la mairie</h2>
-      <div class="grille grille--3">
+      <p class="surtitre">Nos missions</p>
+      <h2>Représenter les familles et améliorer la vie scolaire</h2>
+      <div class="grille grille--4">
         {accueil.data.points.map((point) => <CartePoint {...point} />)}
       </div>
     </div>
   </section>
 
-  <section class="section">
+  {
+    accueil.data.valeurs.length > 0 && (
+      <section class="section">
+        <div class="conteneur">
+          <p class="surtitre">Notre charte</p>
+          <h2>Nos valeurs, notre engagement</h2>
+          <ul class="valeurs">
+            {accueil.data.valeurs.map((valeur) => (
+              <li class="valeur">
+                <strong>{valeur.titre}</strong>
+                <span>{valeur.texte}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section--creme">
     <div class="conteneur">
       <div class="titre-avec-lien">
         <div>
@@ -74,7 +93,7 @@ const ecoles = await getCollection('ecoles');
     </div>
   </section>
 
-  <section class="section section--creme">
+  <section class="section">
     <div class="conteneur bandeau">
       <div>
         <h2>Présents dans {ecoles.length} établissements de la ville</h2>
@@ -143,9 +162,45 @@ const ecoles = await getCollection('ecoles');
     font-size: 1.125rem;
   }
 
-  .grille--3 {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  .grille--4 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     margin-top: 2rem;
+  }
+
+  .valeurs {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  }
+
+  .valeur {
+    padding: 0.9rem 1.1rem;
+    border-radius: 14px;
+    background: var(--creme);
+    border-left: 4px solid var(--orange);
+  }
+
+  .valeur:nth-child(3n + 1) {
+    border-left-color: var(--rouge);
+  }
+
+  .valeur:nth-child(3n + 2) {
+    border-left-color: var(--prune);
+  }
+
+  .valeur strong {
+    display: block;
+    color: var(--texte);
+  }
+
+  .valeur span {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--texte-doux);
+    line-height: 1.4;
   }
 
   .titre-avec-lien {

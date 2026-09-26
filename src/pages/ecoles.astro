@@ -1,8 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EntetePage from '../components/EntetePage.astro';
 import { niveaux } from '../navigation';
+
+const page = await getEntry('pages', 'ecoles');
+if (!page) throw new Error('Fichier src/content/pages/ecoles.md introuvable');
+const { Content } = await render(page);
 
 const ecoles = await getCollection('ecoles');
 const groupes = (Object.keys(niveaux) as (keyof typeof niveaux)[]).map((niveau) => ({
@@ -10,40 +14,85 @@ const groupes = (Object.keys(niveaux) as (keyof typeof niveaux)[]).map((niveau) 
   titre: niveaux[niveau],
   ecoles: ecoles.filter((e) => e.data.niveau === niveau).sort((a, b) => a.data.nom.localeCompare(b.data.nom, 'fr')),
 }));
+const totalEleves = ecoles.reduce((total, e) => total + (e.data.eleves ?? 0), 0);
+const nombre = new Intl.NumberFormat('fr-FR');
 ---
 
-<BaseLayout
-  title="Écoles"
-  description="Les écoles maternelles, élémentaires et collèges de Maisons-Laffitte où l'API est présente."
->
+<BaseLayout title={page.data.title} description={page.data.description}>
   <EntetePage
     surtitre="Nos écoles"
     titre="Une équipe API dans chaque établissement"
-    intro={`L'API est présente dans ${ecoles.length} écoles et collèges publics de Maisons-Laffitte. Chaque établissement a sa propre équipe de parents, joignable par e-mail.`}
+    intro={`L'API est présente dans les ${ecoles.length} écoles et collèges publics de Maisons-Laffitte${totalEleves ? `, soit plus de ${nombre.format(Math.floor(totalEleves / 100) * 100)} élèves` : ''}. Chaque établissement a sa propre équipe de parents, joignable par e-mail.`}
   />
 
   <section class="section">
-    <div class="conteneur niveaux">
+    <div class="conteneur">
+      <nav class="sommaire" aria-label="Aller à">
+        {groupes.map((g) => <a href={`#${g.niveau}`}>{g.titre}</a>)}
+        <a href="#journee">Horaires et cantine</a>
+      </nav>
+
       {
         groupes.map((groupe) => (
-          <div class="niveau">
+          <div class="niveau" id={groupe.niveau}>
             <h2>
               {groupe.titre} <span class="niveau__compte">{groupe.ecoles.length}</span>
             </h2>
             <ul class="grille ecoles">
-              {groupe.ecoles.map((ecole) => (
+              {groupe.ecoles.map(({ data: ecole }) => (
                 <li class="carte ecole">
-                  <h3>{ecole.data.nom}</h3>
-                  <p>
-                    <a href={`mailto:${ecole.data.email}`}>{ecole.data.email}</a>
-                  </p>
-                  {ecole.data.site && (
-                    <p>
-                      <a href={ecole.data.site} rel="noopener" target="_blank">
-                        Site de l'école
-                      </a>
-                    </p>
+                  {ecole.photo && (
+                    <div class="ecole__photo">
+                      <img src={ecole.photo} alt={`Bâtiment : ${ecole.nom}`} loading="lazy" />
+                    </div>
                   )}
+                  <div class="ecole__corps">
+                    <h3>{ecole.nom}</h3>
+                    {(ecole.eleves || ecole.classes) && (
+                      <p class="ecole__chiffres">
+                        {ecole.eleves && <span>{ecole.eleves} élèves</span>}
+                        {ecole.classes && <span>{ecole.classes} classes</span>}
+                      </p>
+                    )}
+                    <dl class="ecole__infos">
+                      {ecole.adresse && (
+                        <div>
+                          <dt>Adresse</dt>
+                          <dd>{ecole.adresse}</dd>
+                        </div>
+                      )}
+                      {ecole.telephone && (
+                        <div>
+                          <dt>Téléphone</dt>
+                          <dd>
+                            <a href={`tel:${ecole.telephone.replace(/\s/g, '')}`}>{ecole.telephone}</a>
+                          </dd>
+                        </div>
+                      )}
+                      {ecole.emailEcole && (
+                        <div>
+                          <dt>E-mail de l'établissement</dt>
+                          <dd>
+                            <a href={`mailto:${ecole.emailEcole}`}>{ecole.emailEcole}</a>
+                          </dd>
+                        </div>
+                      )}
+                      {ecole.site && (
+                        <div>
+                          <dt>Site</dt>
+                          <dd>
+                            <a href={ecole.site} rel="noopener" target="_blank">
+                              {new URL(ecole.site).hostname}
+                            </a>
+                          </dd>
+                        </div>
+                      )}
+                    </dl>
+                    <p class="ecole__api">
+                      <span>Équipe API</span>
+                      <a href={`mailto:${ecole.email}`}>{ecole.email}</a>
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -52,11 +101,40 @@ const groupes = (Object.keys(niveaux) as (keyof typeof niveaux)[]).map((niveau) 
       }
     </div>
   </section>
+
+  <section class="section section--creme" id="journee">
+    <div class="conteneur prose prose--large">
+      <Content />
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
+  .sommaire {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .sommaire a {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: var(--creme);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .sommaire a:hover {
+    background: var(--creme-fonce);
+  }
+
+  .niveau {
+    scroll-margin-top: 100px;
+  }
+
   .niveau + .niveau {
-    margin-top: 3rem;
+    margin-top: 3.5rem;
   }
 
   .niveau h2 {
@@ -82,14 +160,133 @@ const groupes = (Object.keys(niveaux) as (keyof typeof niveaux)[]).map((niveau) 
     list-style: none;
     padding: 0;
     margin: 0;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   }
 
   .ecole {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     border-top: 4px solid var(--rouge);
   }
 
-  .ecole p {
-    margin: 0.25rem 0 0;
+  .ecole__photo {
+    aspect-ratio: 16 / 10;
+    background: var(--creme);
+  }
+
+  .ecole__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ecole__corps {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .ecole__chiffres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 1rem;
+  }
+
+  .ecole__chiffres span {
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    background: var(--creme);
+    color: var(--rouge);
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+
+  .ecole__infos {
+    margin: 0 0 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .ecole__infos div + div {
+    margin-top: 0.5rem;
+  }
+
+  .ecole__infos dt {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--texte-doux);
+  }
+
+  .ecole__infos dd {
+    margin: 0;
     overflow-wrap: anywhere;
+  }
+
+  .ecole__api {
+    margin: auto 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bordure);
+    overflow-wrap: anywhere;
+  }
+
+  .ecole__api span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--orange);
+  }
+
+  .ecole__api a {
+    font-weight: 700;
+  }
+
+  #journee {
+    scroll-margin-top: 80px;
+  }
+
+  .prose--large {
+    max-width: 860px;
+  }
+
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    border-radius: var(--rayon);
+    overflow: hidden;
+    box-shadow: var(--ombre);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .prose :global(thead th) {
+    background: var(--rouge);
+    color: var(--blanc);
+  }
+
+  .prose :global(tbody tr:last-child td) {
+    border-bottom: 0;
+  }
+
+  .prose :global(h3) {
+    margin-top: 1.5rem;
   }
 </style>
