@@ -1,12 +1,15 @@
 ---
 import site from '../data/site.json';
 import { navigation } from '../navigation';
+import IconeReseau from './IconeReseau.astro';
 
 const annee = new Date().getFullYear();
 ---
 
 <footer class="pied">
-  <img class="pied__frise" src="/images/illustrations/pommes-frise.png" alt="" width="800" height="288" loading="lazy" />
+  <div class="conteneur">
+    <img class="pied__frise" src="/images/illustrations/pommes-frise.png" alt="" width="800" height="303" loading="lazy" />
+  </div>
   <div class="pied__fond">
     <div class="conteneur pied__grille">
       <div>
@@ -24,13 +27,18 @@ const annee = new Date().getFullYear();
       <div>
         <h2 class="pied__titre">Nous suivre</h2>
         <ul>
-          {site.facebook && (
-            <li><a href={site.facebook} rel="noopener" target="_blank">Facebook</a></li>
-          )}
           {site.emailGeneral && (
             <li><a href={`mailto:${site.emailGeneral}`}>{site.emailGeneral}</a></li>
           )}
           <li><a href="/contacts/">Écrire à l'équipe de votre école</a></li>
+          {site.facebook && (
+            <li>
+              <a class="pied__facebook" href={site.facebook} rel="noopener" target="_blank">
+                <IconeReseau reseau="facebook" />
+                Facebook
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </div>
@@ -45,10 +53,11 @@ const annee = new Date().getFullYear();
     margin-top: auto;
   }
 
+  /* Frise de pommes posée sur le bord supérieur du bandeau rouge */
   .pied__frise {
-    width: min(420px, 70%);
-    margin: 0 0 -6px auto;
-    padding-right: 20px;
+    display: block;
+    width: min(380px, 75%);
+    margin: 2rem 0 -1px auto;
   }
 
   .pied__fond {
@@ -102,6 +111,12 @@ const annee = new Date().getFullYear();
   .pied a:hover {
     text-decoration: underline;
     color: var(--blanc);
+  }
+
+  .pied__facebook {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .pied__bas {

@@ -223,6 +223,27 @@ Ouvrez `src/data/partenaires.json` :
 | `categorie` | `parents` (associations de parents), `institutions` ou `solidarite` (sans accent) |
 | `description` | Quelques phrases de présentation |
 | `site` | *(facultatif)* Adresse du site, commençant par `https://`. Supprimez la ligne s'il n'y en a pas, **en retirant aussi la virgule** à la fin de la ligne précédente. |
+| `reseaux` | *(facultatif)* Liens vers les réseaux sociaux du partenaire (voir ci-dessous) |
+
+### Ajouter les réseaux sociaux d'un partenaire
+
+Ajoutez un bloc `reseaux` après la ligne `site`. Vous pouvez y mettre `facebook`, `instagram` et/ou `linkedin` : seuls les réseaux présents s'affichent, sous forme d'icônes à côté de « Visiter le site ».
+
+```json
+{
+  "id": "handi-cap-prevention",
+  "nom": "Handi-Cap-Prévention",
+  "categorie": "solidarite",
+  "description": "Texte de présentation du partenaire.",
+  "site": "https://www.handicaprevention.com",
+  "reseaux": {
+    "facebook": "https://www.facebook.com/…",
+    "instagram": "https://www.instagram.com/…"
+  }
+}
+```
+
+⚠️ N'oubliez pas la **virgule** à la fin de la ligne `"site": …` avant le bloc `reseaux`, ni l'**accolade fermante** `}` du bloc.
 
 Les mêmes [pièges du JSON](#6-modifier-un-contact-ou-ajouter-une-école) (section 6) s'appliquent.
 

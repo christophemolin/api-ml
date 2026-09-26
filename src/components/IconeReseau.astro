@@ -1,0 +1,73 @@
+---
+// Icône de réseau social. Par défaut elle prend la couleur du texte ;
+// avec `couleur`, elle s'affiche aux couleurs officielles du réseau.
+interface Props {
+  reseau: 'facebook' | 'instagram' | 'linkedin';
+  taille?: number;
+  couleur?: boolean;
+}
+
+const { reseau, taille = 20, couleur = false } = Astro.props;
+const fond = couleur ? { facebook: '#1877f2', instagram: 'url(#degrade-instagram)', linkedin: '#0a66c2' }[reseau] : 'currentColor';
+const trace = couleur ? '#fff' : 'currentColor';
+---
+
+<svg class="icone-reseau" viewBox="0 0 24 24" width={taille} height={taille} aria-hidden="true">
+  {
+    reseau === 'facebook' &&
+      (couleur ? (
+        <>
+          <circle cx="12" cy="12" r="12" fill={fond} />
+          <path
+            fill="#fff"
+            d="M16.67 15.56 17.2 12.07h-3.32V9.81c0-.96.46-1.89 1.96-1.89h1.5V4.95s-1.37-.24-2.68-.24c-2.74 0-4.54 1.68-4.54 4.7v2.66H7.08v3.49h3.04V24a12.3 12.3 0 0 0 3.76 0v-8.44h2.8"
+          />
+        </>
+      ) : (
+        <path
+          fill="currentColor"
+          d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"
+        />
+      ))
+  }
+  {
+    reseau === 'instagram' && (
+      <>
+        {couleur && (
+          <>
+            <defs>
+              <radialGradient id="degrade-instagram" cx="0.3" cy="1.07" r="1.3">
+                <stop offset="0" stop-color="#fdd35b" />
+                <stop offset="0.3" stop-color="#fa7e1e" />
+                <stop offset="0.6" stop-color="#d62976" />
+                <stop offset="1" stop-color="#4f5bd5" />
+              </radialGradient>
+            </defs>
+            <rect width="24" height="24" rx="6" fill={fond} />
+          </>
+        )}
+        <rect x="4.5" y="4.5" width="15" height="15" rx="4.5" fill="none" stroke={trace} stroke-width="1.9" />
+        <circle cx="12" cy="12" r="3.5" fill="none" stroke={trace} stroke-width="1.9" />
+        <circle cx="16.3" cy="7.7" r="1.15" fill={trace} />
+      </>
+    )
+  }
+  {
+    reseau === 'linkedin' && (
+      <>
+        <rect width="24" height="24" rx="4" fill={fond} />
+        <g fill="#fff">
+          <rect x="5.3" y="9.4" width="2.8" height="9.1" />
+          <circle cx="6.7" cy="6.3" r="1.6" />
+          <path d="M10.4 9.4h2.7v1.25c.4-.72 1.36-1.48 2.8-1.48 3 0 3.55 1.97 3.55 4.53v4.8h-2.8v-4.25c0-1.02-.02-2.33-1.42-2.33-1.42 0-1.64 1.1-1.64 2.25v4.33h-2.8z" />
+        </g>
+      </>
+    )
+  }
+</svg>
+
+<style>
+  .icone-reseau {
+    flex-shrink: 0;
+  }
+</style>

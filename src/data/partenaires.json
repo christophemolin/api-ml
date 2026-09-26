@@ -28,15 +28,27 @@
     "site": "https://www.ac-versailles.fr"
   },
   {
-    "id": "petits-bouchons",
-    "nom": "Les petits bouchons",
+    "id": "handi-cap-prevention",
+    "nom": "Handi-Cap-Prévention",
     "categorie": "solidarite",
-    "description": "Collecte de bouchons en plastique dans les écoles : leur recyclage permet de financer des fauteuils roulants et du matériel adapté pour les personnes en situation de handicap."
+    "description": "Association d'Île-de-France qui collecte les bouchons et couvercles en plastique (opération « Roulez petits bouchons »). Leur recyclage finance du matériel pour les personnes en situation de handicap : 100 % des fonds collectés leur sont reversés.",
+    "site": "https://www.handicaprevention.com",
+    "reseaux": {
+      "facebook": "https://www.facebook.com/handicaprevention.roulezpetitsbouchons",
+      "instagram": "https://www.instagram.com/handicaprevention/",
+      "linkedin": "https://www.linkedin.com/in/segolene-rottembourg-0b923b232/"
+    }
   },
   {
-    "id": "pour-margot",
-    "nom": "Pour Margot",
+    "id": "imagine-for-margo",
+    "nom": "Imagine for Margo",
     "categorie": "solidarite",
-    "description": "Association qui récolte des fonds pour soutenir la recherche médicale contre les cancers de l'enfant."
+    "description": "Association de parents créée en 2011 qui se mobilise contre les cancers des enfants. Elle a déjà consacré plus de 30 millions d'euros à la recherche en oncologie pédiatrique, notamment grâce à sa course solidaire « Enfants sans Cancer ».",
+    "site": "https://imagineformargo.org",
+    "reseaux": {
+      "facebook": "https://www.facebook.com/imagine.for.margo/",
+      "instagram": "https://www.instagram.com/imagineformargo_officiel/",
+      "linkedin": "https://www.linkedin.com/company/imagine-for-margo/"
+    }
   }
 ]

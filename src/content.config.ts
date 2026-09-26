@@ -75,6 +75,14 @@ const partenaires = defineCollection({
     categorie: z.enum(['parents', 'institutions', 'solidarite']),
     description: z.string(),
     site: z.url().optional(),
+    // Liens vers les réseaux sociaux du partenaire (tous facultatifs)
+    reseaux: z
+      .object({
+        facebook: z.url().optional(),
+        instagram: z.url().optional(),
+        linkedin: z.url().optional(),
+      })
+      .optional(),
   }),
 });
 

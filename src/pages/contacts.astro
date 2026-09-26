@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EntetePage from '../components/EntetePage.astro';
+import IconeReseau from '../components/IconeReseau.astro';
 import site from '../data/site.json';
 import { niveaux } from '../navigation';
 
@@ -52,19 +53,20 @@ const lignes = ecoles
 
       <aside class="carte contacts__general">
         <h2>L'association</h2>
+        <p>Pour toute question liée à votre école, écrivez à l'e‑mail de l'établissement de votre enfant.</p>
         {
-          site.emailGeneral ? (
+          site.emailGeneral && (
             <p>
-              E-mail : <a href={`mailto:${site.emailGeneral}`}>{site.emailGeneral}</a>
+              Pour toute autre question, utilisez l'e‑mail{' '}
+              <a href={`mailto:${site.emailGeneral}`}>{site.emailGeneral}</a>.
             </p>
-          ) : (
-            <p>Pour toute question générale, écrivez à l'équipe de l'établissement de votre enfant.</p>
           )
         }
         {
           site.facebook && (
             <p>
               <a class="bouton" href={site.facebook} rel="noopener" target="_blank">
+                <IconeReseau reseau="facebook" taille={22} couleur />
                 Suivez-nous sur Facebook
               </a>
             </p>
@@ -136,6 +138,10 @@ const lignes = ecoles
 
   .tableau td a {
     overflow-wrap: break-word;
+  }
+
+  .contacts__general a[href^='mailto:'] {
+    overflow-wrap: anywhere;
   }
 
   .contacts__general h2 {

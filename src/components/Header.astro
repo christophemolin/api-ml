@@ -8,9 +8,15 @@ const estActif = (href: string) =>
 
 <header class="entete">
   <div class="conteneur entete__barre">
-    <a href="/" class="entete__logo" aria-label="API Maisons-Laffitte, retour à l'accueil">
-      <img src="/logos/logo-api-texte.png" alt="API, Association des Parents Indépendants" width="1058" height="361" />
-    </a>
+    <div class="entete__marque">
+      <a href="/" class="entete__logo" aria-label="API Maisons-Laffitte, retour à l'accueil">
+        <img src="/logos/logo-api-texte.png" alt="API, Association des Parents Indépendants" width="1058" height="361" />
+      </a>
+      <span class="entete__ville">
+        <img src="/logos/blason-maisons-laffitte.png" alt="Blason de la ville de Maisons-Laffitte" width="166" height="86" />
+        <span class="entete__ville-nom">Maisons-<br />Laffitte</span>
+      </span>
+    </div>
 
     <button class="entete__burger" type="button" aria-expanded="false" aria-controls="menu-principal">
       <span class="entete__burger-icone" aria-hidden="true"></span>
@@ -65,9 +71,38 @@ const estActif = (href: string) =>
     min-height: 76px;
   }
 
+  .entete__marque {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
   .entete__logo img {
     height: 48px;
     width: auto;
+  }
+
+  /* Blason de Maisons-Laffitte, séparé du logo API par un filet */
+  .entete__ville {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 14px;
+    border-left: 1px solid var(--bordure);
+  }
+
+  .entete__ville img {
+    height: 40px;
+    width: auto;
+  }
+
+  .entete__ville-nom {
+    font-size: 0.85rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #1f2a44;
   }
 
   .menu ul {
@@ -150,9 +185,13 @@ const estActif = (href: string) =>
     top: 6px;
   }
 
-  @media (max-width: 940px) {
+  @media (max-width: 1080px) {
     .entete__logo img {
       height: 40px;
+    }
+
+    .entete__ville img {
+      height: 34px;
     }
 
     .entete__burger {
@@ -187,6 +226,12 @@ const estActif = (href: string) =>
     .menu__lien--cta {
       margin: 0.5rem 0 0;
       text-align: center;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .entete__ville-nom {
+      display: none;
     }
   }
 </style>

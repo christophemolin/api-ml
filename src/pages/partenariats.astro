@@ -2,8 +2,14 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EntetePage from '../components/EntetePage.astro';
+import IconeReseau from '../components/IconeReseau.astro';
 
 const partenaires = await getCollection('partenaires');
+const reseaux = [
+  { id: 'facebook', nom: 'Facebook' },
+  { id: 'instagram', nom: 'Instagram' },
+  { id: 'linkedin', nom: 'LinkedIn' },
+] as const;
 const categories = [
   {
     id: 'parents',
@@ -48,12 +54,33 @@ const categories = [
                     <article class="carte partenaire">
                       <h3>{p.data.nom}</h3>
                       <p>{p.data.description}</p>
-                      {p.data.site && (
-                        <p class="partenaire__lien">
-                          <a href={p.data.site} rel="noopener" target="_blank">
-                            Visiter le site →
-                          </a>
-                        </p>
+                      {(p.data.site || p.data.reseaux) && (
+                        <div class="partenaire__liens">
+                          {p.data.site && (
+                            <a class="partenaire__site" href={p.data.site} rel="noopener" target="_blank">
+                              Visiter le site →
+                            </a>
+                          )}
+                          {p.data.reseaux && (
+                            <ul class="partenaire__reseaux">
+                              {reseaux
+                                .filter((r) => p.data.reseaux?.[r.id])
+                                .map((r) => (
+                                  <li>
+                                    <a
+                                      href={p.data.reseaux?.[r.id]}
+                                      rel="noopener"
+                                      target="_blank"
+                                      aria-label={`${p.data.nom} sur ${r.nom}`}
+                                      title={r.nom}
+                                    >
+                                      <IconeReseau reseau={r.id} taille={28} couleur />
+                                    </a>
+                                  </li>
+                                ))}
+                            </ul>
+                          )}
+                        </div>
                       )}
                     </article>
                   ))}
@@ -92,8 +119,34 @@ const categories = [
     color: var(--texte-doux);
   }
 
-  .partenaire__lien {
+  .partenaire__liens {
     margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+  }
+
+  .partenaire__site {
     font-weight: 700;
+  }
+
+  .partenaire__reseaux {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .partenaire__reseaux a {
+    display: block;
+    border-radius: 6px;
+    transition: transform 0.15s;
+  }
+
+  .partenaire__reseaux a:hover {
+    transform: translateY(-2px);
   }
 </style>
