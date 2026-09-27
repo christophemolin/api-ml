@@ -4,6 +4,7 @@
     "nom": "PEEP Maisons-Laffitte",
     "categorie": "parents",
     "description": "Association de parents d'élèves de l'enseignement public. Deux associations pour une même ville : nous travaillons main dans la main dans les écoles et collèges de Maisons-Laffitte (organisation des élections, conseils d'école, kermesses, fête des écoles, chalets de Noël…) au service de tous les enfants.",
+    "logo": "/images/partenaires/peep.avif",
     "site": "https://peepmaisonslaffitte.wixsite.com/asso"
   },
   {
@@ -11,6 +12,7 @@
     "nom": "Mairie de Maisons-Laffitte",
     "categorie": "institutions",
     "description": "Un dialogue régulier avec la ville : nous participons aux commissions sur le périscolaire, la restauration scolaire et le Projet éducatif territorial (PEDT). Retrouvez aussi l'API dans l'annuaire des associations de la ville.",
+    "logo": "/images/partenaires/blason-maisons-laffitte.png",
     "site": "https://www.maisonslaffitte.fr/Associations/10192/12101"
   },
   {
@@ -18,6 +20,7 @@
     "nom": "Éducation nationale",
     "categorie": "institutions",
     "description": "Les écoles et collèges de la ville, avec qui nous échangeons lors des conseils d'école et conseils d'administration. Retrouvez les informations nationales sur le site du ministère.",
+    "logo": "/images/partenaires/education-nationale.jpg",
     "site": "https://www.education.gouv.fr"
   },
   {
@@ -25,6 +28,7 @@
     "nom": "Académie de Versailles",
     "categorie": "institutions",
     "description": "L'académie dont dépendent les établissements de Maisons-Laffitte : calendrier scolaire, orientation, informations aux familles.",
+    "logo": "/images/partenaires/academie-versaille.svg",
     "site": "https://www.ac-versailles.fr"
   },
   {
@@ -69,6 +73,7 @@
     "nom": "Rentrée Discount",
     "categorie": "soutien",
     "description": "Les listes de fournitures scolaires de chaque classe, prêtes à commander en un clic et modifiables. Une partie des ventes est reversée à l'API. Codes établissement : Mansart 26NA1S15, Ledreux 26RA1S3, Collège Le Prieuré 26NA2L3 (Colbert : code à venir).",
+    "logo": "/images/partenaires/rentreediscount.svg",
     "site": "https://www.rentreediscount.com/LISTES-SCOLAIRES.html"
   },
   {
@@ -76,6 +81,7 @@
     "nom": "A-Qui-S",
     "categorie": "soutien",
     "description": "Étiquettes pour vêtements et objets, tampons textiles, sacs, gourdes et boîtes à goûter personnalisés. Avec le code API MAI0492, jusqu'à 15 % de remise pour les familles, et 15 % du montant des commandes reversé à l'association.",
+    "logo": "/images/partenaires/a-qui-s.svg",
     "site": "https://www.a-qui-s.fr/"
   },
   {
@@ -83,6 +89,7 @@
     "nom": "HelloAsso",
     "categorie": "soutien",
     "description": "La plateforme de paiement en ligne que nous utilisons pour nos ventes solidaires au profit des écoles : t-shirts et casquettes pour la kermesse de l'école Ledreux, chocolats de Pâques pour la maternelle Cocteau…",
+    "logo": "/images/partenaires/helloasso.svg",
     "site": "https://www.helloasso.com/"
   }
 ]
