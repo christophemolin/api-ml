@@ -171,12 +171,18 @@ const nombre = new Intl.NumberFormat('fr-FR');
     border-top: 4px solid var(--rouge);
   }
 
+  /* Cadre photo de format fixe : toutes les cartes ont la même hauteur d'image */
   .ecole__photo {
+    position: relative;
+    flex-shrink: 0;
     aspect-ratio: 16 / 10;
+    overflow: hidden;
     background: var(--creme);
   }
 
   .ecole__photo img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
